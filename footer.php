@@ -1,10 +1,13 @@
-<?php
+    <footer>
+        <?php
+            wp_nav_menu([
+                'theme_location' => 'footer-menu',
+            ]);
+        ?>
+    </footer>
 
-/**
- * Affiche le menu "Menu footer" enregistré au préalable.
- */
-wp_nav_menu([
-    'theme_location' => 'footer-menu',
-]);
+    <?php wp_footer(); ?>
+    
+</body>
 
-?>
+</html>
