@@ -7,7 +7,8 @@
 </head>
 
 <body>
-    <nav role="navigation" aria-label="<?php _e('Menu principal', 'text-domain'); ?>">
+    <nav role="navigation" class="main-menu" aria-label="<?php _e('Menu principal', 'text-domain'); ?>"></a>
+        <a href="<?php echo get_home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri() . '/images/Logo.png' ?>" alt="Nathalie Mota">
         <?php
             wp_nav_menu([
                 'theme_location' => 'main-menu',
@@ -16,3 +17,5 @@
             ]);
         ?>
     </nav>
+
+    <?php get_template_part( 'templates_part/modal' ); ?>

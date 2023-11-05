@@ -28,4 +28,15 @@ function montheme_link_class($attrs) { //ajoute la class 'nav-link' sur les <a>
 add_filter('nav_menu_css_class', 'montheme_menu_class');
 add_filter('nav_menu_link_attributes', 'montheme_link_class');
 
+function new_item_menu( $items, $args ) {
+    if( $args->theme_location == 'main-menu' ) {
+	    $items .= '<li class="menu-item"><p class="modal-btn">Contact</p></li>';
+    }
+    if( $args->theme_location == 'footer-menu' ) {
+	    $items .= '<li class="menu-item"><p>Tous droits réservés</p></li>';
+    }
+	return $items;
+}
+add_filter( 'wp_nav_menu_items', 'new_item_menu', 10, 2 );
+
 include('menus.php');
