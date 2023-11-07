@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head(); ?>
 </head>
 
@@ -16,6 +16,11 @@
                 'walker'         => new Ally_Walker_Nav_Menu(),
             ]);
         ?>
+        <!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"> -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
     </nav>
 
     <?php get_template_part( 'templates_part/modal' ); ?>

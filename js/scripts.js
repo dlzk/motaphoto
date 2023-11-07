@@ -5,7 +5,7 @@ var modal = document.getElementById('myModal');
 var btn = document.querySelector(".modal-btn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+//var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -13,9 +13,9 @@ btn.onclick = function() {
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+// span.onclick = function() {
+//     modal.style.display = "none";
+// }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -23,3 +23,29 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+let button = document.querySelector('.menu-toggle');
+
+( function() {
+
+    const siteNavigation = document.querySelector( '.main-menu' );
+  
+      // Return early if the navigation doesn't exist.
+      if ( ! siteNavigation ) {
+          return;
+      }
+  
+  button.addEventListener( 'click', function() {
+    siteNavigation.classList.toggle( 'toggled' );
+  } );
+  
+  // Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
+  document.addEventListener( 'click', function( event ) {
+    const isClickInside = siteNavigation.contains( event.target );
+  
+    if ( ! isClickInside ) {
+      siteNavigation.classList.remove( 'toggled' );
+    }
+  } );
+  
+  }() );

@@ -4,6 +4,7 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 function theme_enqueue_styles() {
     wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() . '/style.css' );
     wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), 1.1, true );
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' );
 }
 
 function register_my_menu() {
@@ -30,10 +31,10 @@ add_filter('nav_menu_link_attributes', 'montheme_link_class');
 
 function new_item_menu( $items, $args ) {
     if( $args->theme_location == 'main-menu' ) {
-	    $items .= '<li class="menu-item"><p class="modal-btn">Contact</p></li>';
+	    $items .= '<li class="menu-item"><p class="modal-btn">CONTACT</p></li>';
     }
     if( $args->theme_location == 'footer-menu' ) {
-	    $items .= '<li class="menu-item"><p>Tous droits réservés</p></li>';
+	    $items .= '<li class="menu-item"><p>TOUS DROITS RÉSERVÉS</p></li>';
     }
 	return $items;
 }
