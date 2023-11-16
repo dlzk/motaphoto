@@ -11,40 +11,48 @@
 
 get_header();
 
+$cats = get_terms(array(
+    'taxonomy'   => 'categorie',
+    'hide_empty' => false,
+) );
+$formats = get_terms(array(
+    'taxonomy'   => 'format',
+    'hide_empty' => false,
+) );
+
+
+
 /* Start the Loop */
 while ( have_posts() ) :
-	the_post();
-
-	get_template_part( 'template-parts/content/content-single' );
-
-	if ( is_attachment() ) {
-		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
-	}
-
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
-
-	// Previous/next post navigation.
-	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
-
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
-
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);
-endwhile; // End of the loop.
+	the_post(); ?>
+	<section>
+		<div class="flex">
+			<div class="single-info">
+				<h2 class="single-title"><?php the_title(); ?></h2>
+				<p>RÉFÉRENCE : <span class="single-ref"><?php echo get_field('reference'); ?></span></p>
+				<p>CATÉGORIE : <?php foreach ($cats as $cat) {echo $cat->name;} ?></p>
+				<p>FORMAT : <?php foreach ($formats as $format) {echo $format->name;} ?></p>
+				<p>TYPE : <?php echo get_field('type'); ?></p>
+				<p>ANNÉE : <?php echo get_the_time('Y'); ?></p>
+			</div>
+			<div class="image-fit">
+				<?php 
+					//the_content();
+					if ( has_post_thumbnail() ) { // Vérifies qu'une miniature est associée à l'article.
+						the_post_thumbnail();
+					}
+				?>
+			</div>
+		</div>
+		<div class="flex single-contact">
+			<p>Cette photo vous intéresse ?</p>
+			<button class="single-btn single-modal">Contact</button>
+		</div>
+	</section>
+	<section>
+		<p>VOUS AIMEREZ AUSSI</p>
+		<button class="single-btn">Toutes les photos</button>
+	</section>
+<?php endwhile; // End of the loop.
 
 get_footer();

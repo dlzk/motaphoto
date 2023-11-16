@@ -3,6 +3,8 @@ var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.querySelector(".modal-btn");
+var SingleBtn = document.querySelector(".single-modal");
+var ref = document.querySelector(".single-ref");
 
 // Get the <span> element that closes the modal
 //var span = document.getElementsByClassName("close")[0];
@@ -10,6 +12,10 @@ var btn = document.querySelector(".modal-btn");
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
+}
+SingleBtn.onclick = function() {
+  modal.style.display = "block";
+  jQuery("#refphoto").val(ref.innerHTML);
 }
 
 // When the user clicks on <span> (x), close the modal

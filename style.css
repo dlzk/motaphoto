@@ -8,6 +8,14 @@ Theme Name: Motaphoto
     font-family: 'Space Mono', monospace;
 }
 
+h2 {
+    font-size: 66px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: 0em;
+    text-align: left;
+}
 
 /*Pour les menus*/
 .main-menu, footer {
@@ -116,6 +124,35 @@ form p {
 }
 .wpcf7-submit {
     padding: 1em 10em;
+    border: 0px;
+    background-color: #D8D8D8;
+}
+
+/*Pour les post photo*/
+.flex {
+    display: flex;
+}
+.single-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 50vw;
+    border-bottom: solid 1px black;
+}
+.single-title {
+    margin: 16px 0;
+}
+.image-fit img {
+    object-fit: contain;
+    width: 50vw;
+}
+.single-contact {
+    border-bottom: solid 1px black;
+}
+.single-btn {
+    padding: 8px 100px;
+    margin-left: 12vw;
+    border-radius: 2px;
     border: 0px;
     background-color: #D8D8D8;
 }
