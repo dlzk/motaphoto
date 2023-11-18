@@ -36,8 +36,7 @@ while ( have_posts() ) :
 				<p>ANNÉE : <?php echo get_the_time('Y'); ?></p>
 			</div>
 			<div class="single-image">
-				<?php 
-					//the_content();
+				<?php
 					if ( has_post_thumbnail() ) { // Vérifies qu'une miniature est associée à l'article.
 						the_post_thumbnail();
 					}

@@ -101,6 +101,7 @@ footer {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation: fadeIn 1s;
 }
 /* Modal Content/Box */
 .modal-content {
@@ -140,7 +141,11 @@ form p {
     border: 0px;
     background-color: #D8D8D8;
 }
-
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
 /*Pour les post photo*/
 .flex {
     display: flex;
@@ -161,7 +166,11 @@ form p {
     width: 50vw;
     height: auto;
 }
+.single-image img:hover {
+    filter : brightness(40%); 
+}
 .single-contact {
+    position: relative;
     align-items: center;
     height: 118px;
     border-bottom: solid 1px black;
@@ -172,6 +181,7 @@ form p {
     border-radius: 2px;
     border: 0px;
     background-color: #D8D8D8;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1100px) {
