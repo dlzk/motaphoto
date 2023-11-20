@@ -11,7 +11,14 @@ Theme Name: Motaphoto
 body {
     margin: 0;
 }
-
+h1 {
+    font-size: 96px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 142px;
+    letter-spacing: 0em;
+    text-align: left;
+}
 h2 {
     font-size: 66px;
     font-style: italic;
@@ -46,7 +53,6 @@ h2 {
     display: flex;
     justify-content: space-between;
     box-shadow: 0px 4px 14px 10px #00000008;
-    margin-bottom: 10vh;
 
 }
 .main-menu a {
@@ -150,6 +156,9 @@ form p {
 .flex {
     display: flex;
 }
+.single-contenu {
+    margin-top: 10vh;
+}
 .single-info {
     display: flex;
     flex-direction: column;
@@ -161,16 +170,42 @@ form p {
 .single-title {
     margin: 16px 0;
 }
+.single-image {
+    position: relative;
+}
 .single-image img {
     object-fit: contain;
     width: 50vw;
     height: auto;
 }
-.single-image img:hover {
+.single-image .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+}
+.single-image:hover .overlay {
+    opacity: 1;
+}
+.single-image:hover img {
     filter : brightness(40%); 
 }
+.fa-expand {
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
 .single-contact {
-    position: relative;
     align-items: center;
     height: 118px;
     border-bottom: solid 1px black;
@@ -182,6 +217,48 @@ form p {
     border: 0px;
     background-color: #D8D8D8;
     cursor: pointer;
+}
+.photo-load {
+    display: flex;
+    justify-content: center;
+}
+.photo-load .single-btn {
+    margin: 0;
+}
+
+/*Page d'accueil*/
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.hero img {
+    display: block;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+.hero h1 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #FFFFFF;
+}
+.catalogue-photo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.catalogue-photo img {
+    object-fit: cover;
+    width: 564px;
+    height: 495px;
+    padding: 15px;
+
+    /* width: 48%;
+    padding: 1%;
+    height: auto; */
 }
 
 @media screen and (max-width: 1100px) {

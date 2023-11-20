@@ -25,7 +25,7 @@ $formats = get_terms(array(
 /* Start the Loop */
 while ( have_posts() ) :
 	the_post(); ?>
-	<section class="margin-space">
+	<section class="margin-space single-contenu">
 		<div class="flex single-info-image">
 			<div class="single-info">
 				<h2 class="single-title"><?php the_title(); ?></h2>
@@ -41,6 +41,9 @@ while ( have_posts() ) :
 						the_post_thumbnail();
 					}
 				?>
+				<div class="overlay">
+					<i class="fa-solid fa-expand"></i>
+				</div>
 			</div>
 		</div>
 		<div class="flex single-contact">
@@ -50,7 +53,12 @@ while ( have_posts() ) :
 	</section>
 	<section class="margin-space single-photo">
 		<p>VOUS AIMEREZ AUSSI</p>
-		<button class="single-btn">Toutes les photos</button>
+		<div class="catalogue-photo">
+			<?php get_template_part( 'templates_part/photo_block' ); ?>
+		</div>
+		<div class="photo-load">
+			<button class="single-btn">Toutes les photos</button>
+		</div>
 	</section>
 <?php endwhile; // End of the loop.
 
