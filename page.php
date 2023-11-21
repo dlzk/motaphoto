@@ -38,7 +38,7 @@ $formats = get_terms( array(
     'hide_empty' => false,
 ) );
 ?>
-<section>
+<section class="flex">
 	<div>
 		<label for="cat-select">CATÉGORIE</label>
 		<select name="cats" id="cats">
@@ -48,16 +48,31 @@ $formats = get_terms( array(
 		</select>
 	</div>
 	<div>
-		<label for="-select">FORMAT</label>
+		<label for="format-select">FORMAT</label>
 		<select name="formats" id="formats">
 			<?php foreach($formats as $format) { ?>
 				<option value="<?php echo $format->term_id; ?>"><?php echo $format->name; ?></option>
 			<?php } ?>
 		</select>
 	</div>
+	<div>
+		<label for="date-select">TRIER PAR</label>
+		<select name="dates" id="dates">
+			<option value="des">DES PLUS RÉCENTS AUX PLUS ANCIENTS</option>
+			<option value="asc">DES PLUS ANCIENTS AUX PLUS RÉCENTS</option>
+		</select>
+	</div>
 </section>
-<section class="catalogue-photo">
-	<?php get_template_part( 'templates_part/photo_block' ); ?>
+<section >
+	<?php get_template_part( 'templates_part/photo_block' );?>
+	<div class="photo-load">
+		<button class="single-btn js-load-photos" 
+		data-postid="<?php echo get_the_ID(); ?>"
+    	data-nonce="<?php echo wp_create_nonce('capitaine_load_photos'); ?>"
+    	data-action="capitaine_load_photos"
+    	data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+		>Charger plus</button>
+	</div>
 </section>
 
 <?php get_footer(); ?>

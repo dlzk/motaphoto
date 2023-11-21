@@ -3,11 +3,11 @@ Theme Name: Motaphoto
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Mono&display=swap');
 
 * {
     font-family: 'Space Mono', monospace;
 }
-
 body {
     margin: 0;
 }
@@ -16,16 +16,18 @@ h1 {
     font-style: italic;
     font-weight: 700;
     line-height: 142px;
-    letter-spacing: 0em;
-    text-align: left;
 }
 h2 {
     font-size: 66px;
     font-style: italic;
     font-weight: 400;
     line-height: 58px;
-    letter-spacing: 0em;
-    text-align: left;
+}
+option {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
 }
 .margin-space {
     margin: 0 5vw;
@@ -195,7 +197,7 @@ form p {
 .single-image:hover img {
     filter : brightness(40%); 
 }
-.fa-expand {
+.fa-expand, .fa-eye {
     color: white;
     font-size: 100px;
     position: absolute;
@@ -204,7 +206,7 @@ form p {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
 .single-contact {
     align-items: center;
     height: 118px;

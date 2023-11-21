@@ -3,25 +3,13 @@ var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.querySelector(".modal-btn");
-var SingleBtn = document.querySelector(".single-modal");
 var ref = document.querySelector(".single-ref");
 
-// Get the <span> element that closes the modal
-//var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
 }
-SingleBtn.onclick = function() {
-  modal.style.display = "block";
-  jQuery("#refphoto").val(ref.innerHTML);
-}
-
-// When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -30,12 +18,13 @@ window.onclick = function(event) {
     }
 }
 
+
 let button = document.querySelector('.menu-toggle');
 
 ( function() {
 
     const siteNavigation = document.querySelector( '.main-menu' );
-  
+
       // Return early if the navigation doesn't exist.
       if ( ! siteNavigation ) {
           return;
@@ -45,7 +34,7 @@ let button = document.querySelector('.menu-toggle');
     siteNavigation.classList.toggle( 'toggled' );
   } );
   
-  // Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
+  // Remove the .toggled class when the user clicks outside the navigation.
   document.addEventListener( 'click', function( event ) {
     const isClickInside = siteNavigation.contains( event.target );
   
@@ -54,4 +43,57 @@ let button = document.querySelector('.menu-toggle');
     }
   } );
   
-  }() );
+}() );
+
+
+(function ($) {
+  $(document).ready(function () {
+
+    // Chargment des photos en Ajax
+    $('.js-load-photos').click(function (e) {
+
+      // Empêcher l'envoi classique du formulaire
+      e.preventDefault();
+
+      // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
+      const ajaxurl = $(this).data('ajaxurl');
+
+      // Les données de notre formulaire
+			// ⚠️ Ne changez pas le nom "action" !
+      const data = {
+        action: $(this).data('action'), 
+        nonce:  $(this).data('nonce'),
+        postid: $(this).data('postid'),
+    }
+
+      // Pour vérifier qu'on a bien récupéré les données
+      console.log(ajaxurl);
+      console.log(data);
+
+      // Requête Ajax en JS natif via Fetch
+      fetch(ajaxurl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Cache-Control': 'no-cache',
+        },
+        body: new URLSearchParams(data),
+      })
+      .then(response => response.json())
+      .then(body => {
+        console.log(body);
+
+        // En cas d'erreur
+        if (!body.success) {
+          alert(response.data);
+          return;
+        }
+
+        // Et en cas de réussite
+        $(this).hide(); // Cacher le formulaire
+        $('.catalogue-photo').html(body.data); // Et afficher le HTML
+      });
+    });
+   
+  });
+})(jQuery);
