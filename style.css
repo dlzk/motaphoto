@@ -23,7 +23,7 @@ h2 {
     font-weight: 400;
     line-height: 58px;
 }
-option {
+select {
     font-family: Poppins;
     font-size: 14px;
     font-weight: 300;
@@ -245,7 +245,9 @@ form p {
     position: absolute;
     text-align: center;
     width: 100%;
-    color: #FFFFFF;
+    color: #ffffff00;
+    text-stroke: 1px #FFFFFF;
+    -webkit-text-stroke: 1px #FFFFFF;
 }
 .catalogue-photo {
     display: flex;

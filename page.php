@@ -64,7 +64,14 @@ $formats = get_terms( array(
 	</div>
 </section>
 <section >
-	<?php get_template_part( 'templates_part/photo_block' );?>
+	<?php
+    $number_of_photos = 8;
+    $args = array('number_of_photos' => $number_of_photos);
+    ob_start();
+    get_template_part('templates_part/photo_block', null, $args);
+    $photo_block_content = ob_get_clean();
+    echo $photo_block_content;
+    ?>
 	<div class="photo-load">
 		<button class="single-btn js-load-photos" 
 		data-postid="<?php echo get_the_ID(); ?>"

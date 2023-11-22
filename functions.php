@@ -78,7 +78,8 @@ function capitaine_load_photos() {
     $name = sanitize_text_field( $_POST['name'] );
 
   	// Requête des photos
-  	$args = array ( 'post_type' => 'photo', 'orderby' => 'date', 'posts_per_page' => '2' );
+  	$args = array ( 'post_type' => 'photo', 'orderby' => 'date', 'posts_per_page' => '-1' );
+    $photo_list = new WP_Query($args);
 
   	// Envoyer les données au navigateur
 	wp_send_json_success( $photo_list );
