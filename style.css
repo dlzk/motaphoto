@@ -2,8 +2,9 @@
 Theme Name: Motaphoto
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Mono&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Mono:wght@400;700&display=swap');
+
 
 * {
     font-family: 'Space Mono', monospace;
@@ -245,9 +246,9 @@ form p {
     position: absolute;
     text-align: center;
     width: 100%;
-    color: #ffffff00;
-    text-stroke: 1px #FFFFFF;
-    -webkit-text-stroke: 1px #FFFFFF;
+    color: transparent;
+    text-stroke: 2px #FFFFFF;
+    -webkit-text-stroke: 2px #FFFFFF;
 }
 .catalogue-photo {
     display: flex;
