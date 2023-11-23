@@ -11,7 +11,7 @@
 
 get_header(); ?>
 
-<div class="hero">
+<section class="hero">
 	<h1>PHOTOGRAPHE EVENT</h1>
 	<?php
 	//Create WordPress Query with 'orderby' set to 'rand' (Random)
@@ -26,7 +26,7 @@ get_header(); ?>
 	//Reset Post Data
 	wp_reset_postdata();
 	?>
-</div>
+</section>
 
 <?php
 $cats = get_terms( array(
@@ -39,38 +39,36 @@ $formats = get_terms( array(
 ) );
 ?>
 <section class="flex">
-	<div>
-		<label for="cat-select">CATÉGORIE</label>
-		<select name="cats" id="cats">
+	<div class="flex">
+		<select class="decorated" name="cats" id="cats">
+			<option selected="selected">CATÉGORIES</option>
 			<?php foreach($cats as $cat) { ?>
 				<option value="<?php echo $cat->term_id; ?>"><?php echo $cat->name; ?></option>
 			<?php } ?>
 		</select>
-	</div>
-	<div>
-		<label for="format-select">FORMAT</label>
 		<select name="formats" id="formats">
+			<option selected="selected">FORMATS</option>
 			<?php foreach($formats as $format) { ?>
 				<option value="<?php echo $format->term_id; ?>"><?php echo $format->name; ?></option>
 			<?php } ?>
 		</select>
 	</div>
 	<div>
-		<label for="date-select">TRIER PAR</label>
 		<select name="dates" id="dates">
+			<option selected="selected">TRIER PAR</option>
 			<option value="des">DES PLUS RÉCENTS AUX PLUS ANCIENTS</option>
 			<option value="asc">DES PLUS ANCIENTS AUX PLUS RÉCENTS</option>
 		</select>
 	</div>
 </section>
-<section >
+<section>
 	<?php
-    $number_of_photos = 8;
-    $args = array('number_of_photos' => $number_of_photos);
-    ob_start();
-    get_template_part('templates_part/photo_block', null, $args);
-    $photo_block_content = ob_get_clean();
-    echo $photo_block_content;
+		$number_of_photos = 8;
+		$args = array('number_of_photos' => $number_of_photos);
+		ob_start();
+		get_template_part('templates_part/photo_block', null, $args);
+		$photo_block_content = ob_get_clean();
+		echo $photo_block_content;
     ?>
 	<div class="photo-load">
 		<button class="single-btn js-load-photos" 

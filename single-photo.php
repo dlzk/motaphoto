@@ -42,7 +42,20 @@ while ( have_posts() ) :
 	</section>
 	<section class="margin-space single-photo">
 		<p>VOUS AIMEREZ AUSSI</p>
-		<?php get_template_part( 'templates_part/photo_block' ); ?>
+		<?php
+			$nom_categorie =  array(
+				array(
+					'taxonomy' => 'categorie',
+					'field' => 'slug',
+					'terms' => strip_tags(get_the_term_list( get_the_ID() , 'categorie')),
+				),
+			);
+			$args = array('nom_categorie' => $nom_categorie);
+			ob_start();
+			get_template_part('templates_part/photo_block', null, $args);
+			$photo_block_content = ob_get_clean();
+			echo $photo_block_content;
+		?>
 		<div class="photo-load">
 			<button class="single-btn">Toutes les photos</button>
 		</div>
