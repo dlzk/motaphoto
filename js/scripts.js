@@ -80,18 +80,19 @@ let button = document.querySelector('.menu-toggle');
         body: new URLSearchParams(data),
       })
       .then(response => response.json())
-      .then(body => {
-        console.log(body);
+      .then(response => {
+        console.log(response);
 
         // En cas d'erreur
-        if (!body.success) {
+        if (!response.success) {
           alert(response.data);
           return;
         }
 
         // Et en cas de réussite
         $(this).hide(); // Cacher le formulaire
-        $('.catalogue-photo').html(body.data); // Et afficher le HTML
+        $('.catalogue-photo').html(response.data); // Et afficher le HTML
+        console.log(response.data.query);
       });
     });
    

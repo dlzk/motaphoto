@@ -78,9 +78,17 @@ function capitaine_load_photos() {
     $name = sanitize_text_field( $_POST['name'] );
 
   	// Requête des photos
-  	$args = array ( 'post_type' => 'photo', 'orderby' => 'date', 'posts_per_page' => '-1' );
+  	$args = array ( 'post_type' => 'photo', 'order' => 'ASC', 'orderby' => 'date', 'posts_per_page' => '-1' );
     $photo_list = new WP_Query($args);
+    while ( $photo_list->have_posts() ) : $photo_list->the_post();
+		if ( has_post_thumbnail() ) { // Vérifies qu'une miniature est associée à l'article.
+			the_post_thumbnail();
+            wp_send_json_success( the_post_thumbnail() );
+		}
+	endwhile;
+    wp_reset_postdata();
+    wp_die();
 
   	// Envoyer les données au navigateur
-	wp_send_json_success( $photo_list );
+	
 }
