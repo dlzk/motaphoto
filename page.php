@@ -40,14 +40,17 @@ $formats = get_terms( array(
 ?>
 <section class="flex">
 	<div class="flex">
-		<select class="decorated" name="cats" id="cats">
-			<option selected="selected">CATÉGORIES</option>
+		<select class="decorated cat-list_item" name="cats" id="cats" 
+			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" 
+			data-action="capitaine_change_taxonomy">
+			<option selected="selected" disabled>CATÉGORIES</option>
 			<?php foreach($cats as $cat) { ?>
-				<option value="<?php echo $cat->term_id; ?>"><?php echo $cat->name; ?></option>
+				<option value="<?php echo $cat->slug; ?>"
+				><?php echo $cat->name; ?></option>
 			<?php } ?>
 		</select>
 		<select name="formats" id="formats">
-			<option selected="selected">FORMATS</option>
+			<option selected="selected" disabled>FORMATS</option>
 			<?php foreach($formats as $format) { ?>
 				<option value="<?php echo $format->term_id; ?>"><?php echo $format->name; ?></option>
 			<?php } ?>
@@ -55,7 +58,7 @@ $formats = get_terms( array(
 	</div>
 	<div>
 		<select name="dates" id="dates">
-			<option selected="selected">TRIER PAR</option>
+			<option selected="selected" disabled>TRIER PAR</option>
 			<option value="des">DES PLUS RÉCENTS AUX PLUS ANCIENTS</option>
 			<option value="asc">DES PLUS ANCIENTS AUX PLUS RÉCENTS</option>
 		</select>
@@ -71,9 +74,7 @@ $formats = get_terms( array(
 		echo $photo_block_content;
     ?>
 	<div class="photo-load">
-		<button class="single-btn js-load-photos" 
-		data-postid="<?php echo get_the_ID(); ?>"
-    	data-nonce="<?php echo wp_create_nonce('capitaine_load_photos'); ?>"
+		<button class="single-btn js-load-photos"
     	data-action="capitaine_load_photos"
     	data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
 		>Charger plus</button>

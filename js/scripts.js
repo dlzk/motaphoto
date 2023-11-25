@@ -46,55 +46,52 @@ let button = document.querySelector('.menu-toggle');
 }() );
 
 
-(function ($) {
-  $(document).ready(function () {
-
-    // Chargment des photos en Ajax
-    $('.js-load-photos').click(function (e) {
-
-      // Empêcher l'envoi classique du formulaire
-      e.preventDefault();
-
-      // L'URL qui réceptionne les requêtes Ajax dans l'attribut "action" de <form>
-      const ajaxurl = $(this).data('ajaxurl');
-
-      // Les données de notre formulaire
-			// ⚠️ Ne changez pas le nom "action" !
-      const data = {
-        action: $(this).data('action'), 
-        nonce:  $(this).data('nonce'),
-        postid: $(this).data('postid'),
-    }
-
-      // Pour vérifier qu'on a bien récupéré les données
-      console.log(ajaxurl);
-      console.log(data);
-
-      // Requête Ajax en JS natif via Fetch
-      fetch(ajaxurl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Cache-Control': 'no-cache',
-        },
-        body: new URLSearchParams(data),
-      })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-
-        // En cas d'erreur
-        if (!response.success) {
-          alert(response.data);
-          return;
-        }
-
-        // Et en cas de réussite
-        $(this).hide(); // Cacher le formulaire
-        $('.catalogue-photo').html(response.data); // Et afficher le HTML
-        console.log(response.data.query);
-      });
+let selectElement = document.querySelector(".cat-list_item");
+var page = 8;
+var taxomonie = '';
+jQuery(function($) {
+  $('body').on('click', '.js-load-photos', function() {
+    page = -1;
+    var data = {
+      'action': $(this).data('action'),
+      'taxomonie': taxomonie,
+      'page': page,
+      'security': blog.security
+    };
+    console.log(blog.ajaxurl);
+    console.log(data);
+ 
+    $.post(blog.ajaxurl, data, function(response) {
+      if($.trim(response) != '') {
+        //$('.catalogue-photo').append(response);
+        $('.catalogue-photo').html(response);
+      } else {
+        $('.js-load-photos').hide();
+      }
     });
-   
   });
-})(jQuery);
+});
+
+jQuery(function($) {
+  $('body').on('change', '.cat-list_item', function() {
+    taxomonie = selectElement.value;
+    page = 8;
+    var data = {
+      'action': $(this).data('action'),
+      'taxomonie': taxomonie,
+      'page': page,
+      'security': blog.security
+    };
+    console.log(blog.ajaxurl);
+    console.log(data);
+ 
+    $.post(blog.ajaxurl, data, function(response) {
+      if($.trim(response) != '') {
+        //$('.catalogue-photo').append(response);
+        $('.catalogue-photo').html(response);
+      } else {
+        $('.js-load-photos').hide();
+      }
+    });
+  });
+});
