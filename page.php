@@ -42,24 +42,28 @@ $formats = get_terms( array(
 	<div class="flex">
 		<select class="decorated cat-list_item" name="cats" id="cats" 
 			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" 
-			data-action="capitaine_change_taxonomy">
-			<option selected="selected" disabled>CATÉGORIES</option>
+			data-action="capitaine_load_photos">
+			<option value="" selected="selected">CATÉGORIES</option>
 			<?php foreach($cats as $cat) { ?>
 				<option value="<?php echo $cat->slug; ?>"
 				><?php echo $cat->name; ?></option>
 			<?php } ?>
 		</select>
-		<select name="formats" id="formats">
-			<option selected="selected" disabled>FORMATS</option>
+		<select class="format-list_item" name="formats" id="formats"
+			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+			data-action="capitaine_load_photos">
+			<option value="" selected="selected">FORMATS</option>
 			<?php foreach($formats as $format) { ?>
-				<option value="<?php echo $format->term_id; ?>"><?php echo $format->name; ?></option>
+				<option value="<?php echo $format->slug; ?>"><?php echo $format->name; ?></option>
 			<?php } ?>
 		</select>
 	</div>
 	<div>
-		<select name="dates" id="dates">
-			<option selected="selected" disabled>TRIER PAR</option>
-			<option value="des">DES PLUS RÉCENTS AUX PLUS ANCIENTS</option>
+		<select class="date_item" name="dates" id="dates"
+			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" 
+			data-action="capitaine_load_photos">
+			<option value="" selected="selected" disabled>TRIER PAR</option>
+			<option value="desc">DES PLUS RÉCENTS AUX PLUS ANCIENTS</option>
 			<option value="asc">DES PLUS ANCIENTS AUX PLUS RÉCENTS</option>
 		</select>
 	</div>

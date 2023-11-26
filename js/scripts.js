@@ -46,16 +46,22 @@ let button = document.querySelector('.menu-toggle');
 }() );
 
 
-let selectElement = document.querySelector(".cat-list_item");
+let catElement = document.querySelector(".cat-list_item");
+let formatElement = document.querySelector(".format-list_item");
+let orderElement = document.querySelector(".date_item");
+var order = 'ASC';
 var page = 8;
-var taxomonie = '';
+var category = '';
+var format = '';
 jQuery(function($) {
   $('body').on('click', '.js-load-photos', function() {
-    page = -1;
+    page = page+8;
     var data = {
       'action': $(this).data('action'),
-      'taxomonie': taxomonie,
+      'category': category,
+      'format': format,
       'page': page,
+      'order': order,
       'security': blog.security
     };
     console.log(blog.ajaxurl);
@@ -63,23 +69,22 @@ jQuery(function($) {
  
     $.post(blog.ajaxurl, data, function(response) {
       if($.trim(response) != '') {
-        //$('.catalogue-photo').append(response);
         $('.catalogue-photo').html(response);
       } else {
         $('.js-load-photos').hide();
       }
     });
   });
-});
 
-jQuery(function($) {
   $('body').on('change', '.cat-list_item', function() {
-    taxomonie = selectElement.value;
+    category = catElement.value;
     page = 8;
     var data = {
       'action': $(this).data('action'),
-      'taxomonie': taxomonie,
+      'category': category,
+      'format': format,
       'page': page,
+      'order': order,
       'security': blog.security
     };
     console.log(blog.ajaxurl);
@@ -87,7 +92,51 @@ jQuery(function($) {
  
     $.post(blog.ajaxurl, data, function(response) {
       if($.trim(response) != '') {
-        //$('.catalogue-photo').append(response);
+        $('.catalogue-photo').html(response);
+      } else {
+        $('.js-load-photos').hide();
+      }
+    });
+  });
+
+  $('body').on('change', '.format-list_item', function() {
+    format = formatElement.value;
+    page = 8;
+    var data = {
+      'action': $(this).data('action'),
+      'category': category,
+      'format': format,
+      'page': page,
+      'order': order,
+      'security': blog.security
+    };
+    console.log(blog.ajaxurl);
+    console.log(data);
+ 
+    $.post(blog.ajaxurl, data, function(response) {
+      if($.trim(response) != '') {
+        $('.catalogue-photo').html(response);
+      } else {
+        $('.js-load-photos').hide();
+      }
+    });
+  });
+
+  $('body').on('change', '.date_item', function() {
+    order = orderElement.value;
+    var data = {
+      'action': $(this).data('action'),
+      'category': category,
+      'format': format,
+      'page': page,
+      'order': order,
+      'security': blog.security
+    };
+    console.log(blog.ajaxurl);
+    console.log(data);
+ 
+    $.post(blog.ajaxurl, data, function(response) {
+      if($.trim(response) != '') {
         $('.catalogue-photo').html(response);
       } else {
         $('.js-load-photos').hide();

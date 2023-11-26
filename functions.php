@@ -60,19 +60,57 @@ add_action( 'wp_ajax_capitaine_load_photos', 'capitaine_load_photos' );
 add_action( 'wp_ajax_nopriv_capitaine_load_photos', 'capitaine_load_photos' );
 function capitaine_load_photos() {
     check_ajax_referer('load_more_posts', 'security');
-    $taxonomy = $_POST['taxomonie'];
+    $category = $_POST['category'];
+    $format = $_POST['format'];
+    $order = $_POST['order'];
     $page = $_POST['page'];
-    if ($taxonomy != '') {
+    if ($category != '' && $format != '') {
         $args = array(
             'post_type' => 'photo',
-            'order' => 'ASC',
+            'order' => $order,
+            'orderby' => 'date',
+            'posts_per_page' => $page,
+            'tax_query' => array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => 'categorie',
+                    'field' => 'slug',
+                    'terms' => $category,
+                ),
+                array(
+                    'taxonomy' => 'format',
+                    'field' => 'slug',
+                    'terms' => $format,
+                ),
+            ),
+        );
+    }
+    elseif ($category != '' && $format == '') {
+        $args = array(
+            'post_type' => 'photo',
+            'order' => $order,
             'orderby' => 'date',
             'posts_per_page' => $page,
             'tax_query' => array(
                 array(
                     'taxonomy' => 'categorie',
                     'field' => 'slug',
-                    'terms' => $taxonomy,
+                    'terms' => $category,
+                ),
+            ),
+        );
+    }
+    elseif ($category == '' && $format != '') {
+        $args = array(
+            'post_type' => 'photo',
+            'order' => $order,
+            'orderby' => 'date',
+            'posts_per_page' => $page,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'format',
+                    'field' => 'slug',
+                    'terms' => $format,
                 ),
             ),
         );
@@ -80,42 +118,11 @@ function capitaine_load_photos() {
     else {
         $args = array(
             'post_type' => 'photo',
-            'order' => 'ASC',
+            'order' => $order,
             'orderby' => 'date',
             'posts_per_page' => $page,
         );
     }
-    $blog_posts = new WP_Query( $args );
-    
- 
-    if ($blog_posts->have_posts() ):
-        while ($blog_posts->have_posts() ): $blog_posts->the_post();
-            the_post_thumbnail();
-        endwhile;
-    endif;
- 
-    wp_die();
-}
-
-add_action( 'wp_ajax_capitaine_change_taxonomy', 'capitaine_change_taxonomy' );
-add_action( 'wp_ajax_nopriv_capitaine_change_taxonomy', 'capitaine_change_taxonomy' );
-function capitaine_change_taxonomy() {
-    check_ajax_referer('load_more_posts', 'security');
-    $taxonomy = $_POST['taxomonie'];
-    $page = $_POST['page'];
-    $args = array(
-        'post_type' => 'photo',
-        'order' => 'ASC',
-        'orderby' => 'date',
-        'posts_per_page' => $page,
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'categorie',
-                'field' => 'slug',
-                'terms' => $taxonomy,
-            ),
-        ),
-    );
     $blog_posts = new WP_Query( $args );
     
  
