@@ -30,7 +30,7 @@ while ( have_posts() ) :
 						the_post_thumbnail();
 					}
 				?>
-				<div class="overlay">
+				<div class="single-image__overlay">
 					<i class="fa-solid fa-expand"></i>
 				</div>
 			</div>

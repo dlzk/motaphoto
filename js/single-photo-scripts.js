@@ -1,4 +1,5 @@
 var SingleBtn = document.querySelector(".single-modal");
+var ref = document.querySelector(".single-ref");
 
 SingleBtn.onclick = function() {
     modal.style.display = "block";

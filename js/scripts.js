@@ -3,7 +3,6 @@ var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.querySelector(".modal-btn");
-var ref = document.querySelector(".single-ref");
 
 
 // When the user clicks on the button, open the modal
