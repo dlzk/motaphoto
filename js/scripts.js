@@ -69,8 +69,9 @@ jQuery(function($) {
     $.post(blog.ajaxurl, data, function(response) {
       if($.trim(response) != '') {
         $('.catalogue-photo').html(response);
+        $('.catalogue-photo').show();
       } else {
-        $('.js-load-photos').hide();
+        $('.catalogue-photo').hide();
       }
     });
   });
@@ -92,8 +93,9 @@ jQuery(function($) {
     $.post(blog.ajaxurl, data, function(response) {
       if($.trim(response) != '') {
         $('.catalogue-photo').html(response);
+        $('.catalogue-photo').show();
       } else {
-        $('.js-load-photos').hide();
+        $('.catalogue-photo').hide();
       }
     });
   });
@@ -115,8 +117,9 @@ jQuery(function($) {
     $.post(blog.ajaxurl, data, function(response) {
       if($.trim(response) != '') {
         $('.catalogue-photo').html(response);
+        $('.catalogue-photo').show();
       } else {
-        $('.js-load-photos').hide();
+        $('.catalogue-photo').hide();
       }
     });
   });
@@ -137,8 +140,9 @@ jQuery(function($) {
     $.post(blog.ajaxurl, data, function(response) {
       if($.trim(response) != '') {
         $('.catalogue-photo').html(response);
+        $('.catalogue-photo').show();
       } else {
-        $('.js-load-photos').hide();
+        $('.catalogue-photo').hide();
       }
     });
   });

@@ -38,7 +38,7 @@ $formats = get_terms( array(
     'hide_empty' => false,
 ) );
 ?>
-<section class="flex">
+<section class="filter flex">
 	<div class="flex">
 		<select class="decorated cat-list_item" name="cats" id="cats" 
 			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" 

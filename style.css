@@ -43,7 +43,7 @@ button {
     list-style-type: none;
     padding: 0;
 }
-.nav-link {
+.nav-link, .photo-load .single-btn {
     text-decoration: none;
     color: black;
 }
@@ -195,7 +195,7 @@ form p {
 .single-image:hover img {
     filter : brightness(40%);
 }
-.fa-expand, .fa-eye {
+.single-image__overlay .fa-expand {
     color: white;
     font-size: 100px;
     position: absolute;
@@ -247,11 +247,20 @@ form p {
     text-stroke: 2px #FFFFFF;
     -webkit-text-stroke: 2px #FFFFFF;
 }
+.filter {
+    margin: 15vh 12vw 2vh 12vw;
+    justify-content: space-between;
+}
+.format-list_item {
+    margin-left: 2vw;
+}
 select {
     font-family: Poppins;
     font-size: 14px;
     font-weight: 300;
     line-height: 21px;
+    min-width: 13vw;
+    border: 1px solid#B8BBC2;
 }
 select:active {
     border: 1.3px solid #215AFF;
@@ -265,24 +274,76 @@ option:active {
 option:checked {
     background-color: #E00000 !important;
 }
+.single-btn:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+/*catalogue photo*/
 .catalogue-photo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.catalogue-photo img {
+.catalogue-photo__image img {
     object-fit: cover;
     width: 564px;
     height: 495px;
-    padding: 15px;
 
     /* width: 48%;
     padding: 1%;
     height: auto; */
 }
-.single-btn:hover {
+.catalogue-photo__image {
+    position: relative;
+    margin: 15px;
+}
+.catalogue-photo__image .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+}
+.catalogue-photo__image:hover .overlay {
+    opacity: 1;
+}
+.catalogue-photo__image:hover img {
+    filter : brightness(40%);
+}
+.overlay .fa-expand, .overlay .fa-eye, .overlay__ref, .overlay__cat {
+    color: white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.overlay .fa-eye {
+    top: 50%;
+    left: 50%;
+    cursor: pointer;
+    font-size: 50px;
+}
+.overlay .fa-expand {
+    top: 10%;
+    left: 90%;
     background-color: #000000;
-    color: #FFFFFF;
+    border-radius: 50%;
+    padding: 2%;
+    cursor: pointer;
+    font-size: 25px;
+}
+.overlay__ref {
+    top: 90%;
+    left: 15%;
+}
+.overlay__cat {
+    top: 90%;
+    left: 85%;
 }
 
 /*Lightbox*/
@@ -305,14 +366,16 @@ option:checked {
 }
 .lightbox__next {
     right: 10%;
+    z-index: 11;
 }
 .lightbox__prev {
     left: 10%;
+    z-index: 11;
 }
 .lightbox__close {
     top: 10%;
     right: 5%;
-    z-index: 11;
+    z-index: 12;
 }
 .lightbox__close .fa-xmark {
     font-size: 30px;

@@ -57,7 +57,7 @@ while ( have_posts() ) :
 			echo $photo_block_content;
 		?>
 		<div class="photo-load">
-			<button class="single-btn">Toutes les photos</button>
+			<a href="<?php echo get_home_url(); ?>" class="single-btn">Toutes les photos</a>
 		</div>
 	</section>
 <?php endwhile; // End of the loop.

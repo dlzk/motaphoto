@@ -128,10 +128,21 @@ function capitaine_load_photos() {
     
  
     if ($blog_posts->have_posts() ):
-        while ($blog_posts->have_posts() ): $blog_posts->the_post();
-            the_post_thumbnail();
-        endwhile;
+        while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+		<div class="catalogue-photo__image">
+			<?php if ( has_post_thumbnail() ) { // Vérifies qu'une miniature est associée à l'article.
+				the_post_thumbnail();
+			} ?>
+			<div class="overlay">
+				<i class="fa-solid fa-expand"></i>
+				<a href="<?php echo get_post_permalink(); ?>"><i class="fa-solid fa-eye"></i></a>
+				<p class="overlay__ref"><?php echo get_field('reference'); ?></p>
+				<p class="overlay__cat"><?php echo strip_tags(get_the_term_list( get_the_ID() , 'categorie')); ?></p>
+			</div>
+		</div>
+	    <?php endwhile;
     endif;
- 
+
+    wp_reset_postdata();
     wp_die();
 }
