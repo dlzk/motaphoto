@@ -15,7 +15,7 @@ get_header();
 while ( have_posts() ) :
 	the_post(); ?>
 	<section class="margin-space single-contenu">
-		<div class="flex single-info-image">
+		<article class="flex single-info-image">
 			<div class="single-info">
 				<h2 class="single-title"><?php the_title(); ?></h2>
 				<p>RÉFÉRENCE : <span class="single-ref"><?php echo get_field('reference'); ?></span></p>
@@ -34,10 +34,46 @@ while ( have_posts() ) :
 					<i class="fa-solid fa-expand"></i>
 				</div>
 			</div>
-		</div>
+		</article>
 		<div class="flex single-contact">
-			<p>Cette photo vous intéresse ?</p>
-			<button class="single-btn single-modal">Contact</button>
+			<div class="photo-interesse flex">
+				<p>Cette photo vous intéresse ?</p>
+				<button class="single-btn single-modal">Contact</button>
+			</div>
+			<div class="nav-post">
+				<div class="prev-post">
+					<?php
+						$prev_post = get_previous_post();
+						if($prev_post) :
+							if (!empty($prev_post)) :
+								echo get_the_post_thumbnail($prev_post);
+							endif;
+						endif;
+					?>
+				</div>
+				<div class="next-post">
+					<?php
+						$next_post = get_next_post();
+						if($next_post) :
+							if (!empty($next_post)) :
+								echo get_the_post_thumbnail($next_post);
+							endif;
+						endif;
+					?>
+				</div>
+				<div class="flex nav-post__arrow">
+					<?php if($prev_post) { ?>
+						<a href="<?php echo get_permalink( $prev_post ); ?>"><i class="fa-solid fa-arrow-left"></i></a>
+					<?php } else { ?>
+						<i class="fa-solid fa-arrow-left ghost"></i>
+					<?php } ?>
+					<?php if($next_post) { ?>
+						<a href="<?php echo get_permalink( $next_post ); ?>"><i class="fa-solid fa-arrow-right"></i></a>
+					<?php } else { ?>
+						<i class="fa-solid fa-arrow-right ghost">
+					<?php } ?>
+				</div>
+			</div>
 		</div>
 	</section>
 	<section class="margin-space single-photo">

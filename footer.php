@@ -1,3 +1,5 @@
+    <?php $next_post = get_next_post();
+    $prev_post = get_previous_post(); ?>
     <section class="lightbox">
         <button class="lightbox__close"><i class="fa-solid fa-xmark"></i></button>
         <button class="lightbox__next flex">Suivante<i class="fa-solid fa-arrow-right"></i></button>
