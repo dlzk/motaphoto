@@ -77,6 +77,11 @@ jQuery(function($) {
         $('.catalogue-photo').hide();
       }
     });
+    $.getScript('wp-content/themes/motaphoto/js/lightbox-scripts.js', function() {
+      // Une fois que le script est chargé, exécutez le code spécifique que vous souhaitez
+      // par exemple, si lightbox-scripts.js a une fonction nommée initLightbox(), vous pouvez l'appeler ici
+      initLightbox();
+  });
   });
 
   $('body').on('change', '.cat-list_item', function() {

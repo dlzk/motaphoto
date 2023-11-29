@@ -19,7 +19,7 @@ while ( have_posts() ) :
 			<div class="single-info">
 				<h2 class="single-title"><?php the_title(); ?></h2>
 				<p>RÉFÉRENCE : <span class="single-ref"><?php echo get_field('reference'); ?></span></p>
-				<p>CATÉGORIE : <?php echo strip_tags(get_the_term_list( get_the_ID() , 'categorie')); ?></p>
+				<p>CATÉGORIE : <span class="single-cat"><?php echo strip_tags(get_the_term_list( get_the_ID() , 'categorie')); ?></span></p>
 				<p>FORMAT : <?php echo strip_tags(get_the_term_list( get_the_ID() , 'format')); ?></p>
 				<p>TYPE : <?php echo get_field('type'); ?></p>
 				<p>ANNÉE : <?php echo get_the_time('Y'); ?></p>

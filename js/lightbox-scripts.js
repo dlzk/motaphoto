@@ -1,3 +1,4 @@
+function initLightbox() {
 let lightbox = document.querySelector(".lightbox");
 let boxcross = document.querySelector(".lightbox__close");
 let LightSource = lightbox.querySelector(".lightbox__container img");
@@ -8,7 +9,7 @@ let LightNext = lightbox.querySelector(".lightbox__next");
 
 
 
-function initLightbox() {
+
     let fullscreens = document.querySelectorAll(".overlay .fa-expand");
 
     fullscreens.forEach( function(fullscreen) {
@@ -23,9 +24,9 @@ function initLightbox() {
         }
     });
 
-    const links = document.querySelectorAll('.catalogue-photo img[src$=".jpeg"]');
-    const refs = document.querySelectorAll('.overlay__ref');
-    const cats = document.querySelectorAll('.overlay__cat');
+    let links = document.querySelectorAll('.catalogue-photo img[src$=".jpeg"], .single-image img[src$=".jpeg"]');
+    const refs = document.querySelectorAll('.overlay__ref, .single-ref');
+    const cats = document.querySelectorAll('.overlay__cat, .single-cat');
     LightPrev.onclick = function() {
         for (let i = 0; i < links.length; i++) {
             if (links[i].src === LightSource.src) {
@@ -64,9 +65,6 @@ function initLightbox() {
         }
     }
 
-    setTimeout(initLightbox,1000);
-}
-initLightbox();
 
 // for (let i = 0; i < links.length; i++) {
 //     console.log(i);
@@ -77,3 +75,5 @@ boxcross.onclick = function() {
     lightbox.style.display = "none"; 
 }
 
+}
+initLightbox();
