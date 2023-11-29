@@ -23,6 +23,7 @@ let button = document.querySelector('.menu-toggle');
 ( function() {
 
     const siteNavigation = document.querySelector( '.main-menu' );
+    const site = document.querySelector( 'body' );
 
       // Return early if the navigation doesn't exist.
       if ( ! siteNavigation ) {
@@ -31,6 +32,7 @@ let button = document.querySelector('.menu-toggle');
   
   button.addEventListener( 'click', function() {
     siteNavigation.classList.toggle( 'toggled' );
+    site.classList.toggle( 'stop-scroll' );
   } );
   
   // Remove the .toggled class when the user clicks outside the navigation.
@@ -39,6 +41,7 @@ let button = document.querySelector('.menu-toggle');
   
     if ( ! isClickInside ) {
       siteNavigation.classList.remove( 'toggled' );
+      site.classList.remove( 'stop-scroll' );
     }
   } );
   
@@ -48,10 +51,10 @@ let button = document.querySelector('.menu-toggle');
 let catElement = document.querySelector(".cat-list_item");
 let formatElement = document.querySelector(".format-list_item");
 let orderElement = document.querySelector(".date_item");
-var order = 'ASC';
-var page = 8;
-var category = '';
-var format = '';
+let order = 'ASC';
+let page = 8;
+let category = '';
+let format = '';
 jQuery(function($) {
   $('body').on('click', '.js-load-photos', function() {
     page = page+8;

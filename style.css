@@ -33,6 +33,9 @@ button, .nav-post__arrow .fa-solid {
 .ghost {
     opacity: 0;
 }
+.stop-scroll {
+    overflow: hidden;
+}
 
 /*Pour les menus*/
 .main-menu, footer {
@@ -224,9 +227,11 @@ form p {
 }
 .prev-post {
     display: none;
+    animation: fadeIn 1s;
 }
 .next-post {
     display: none;
+    animation: fadeIn 1s;
 }
 .nav-post img{
     width: 46px;
@@ -367,6 +372,11 @@ option:checked {
     justify-content: center;
     min-height: 100vh;
     margin: 0 50px;
+}
+.lightbox__container img {
+    width: 75vw;
+    height: 75vh;
+    object-fit: contain;
 }
 .lightbox__next, .lightbox__prev, .lightbox__close, .lightbox__ref, .lightbox__cat {
     position: fixed;

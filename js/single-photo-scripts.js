@@ -1,15 +1,13 @@
-var SingleBtn = document.querySelector(".single-modal");
-var ref = document.querySelector(".single-ref");
+let SingleBtn = document.querySelector(".single-modal");
+let ref = document.querySelector(".single-ref");
 
-var NavPrevPost = document.querySelector(".prev-post");
-var NavNextPost = document.querySelector(".next-post");
-var NavPrevArrow = document.querySelector(".nav-post__arrow .fa-arrow-left");
-var NavNextArrow = document.querySelector(".nav-post__arrow .fa-arrow-right");
+let NavPrevPost = document.querySelector(".prev-post");
+let NavNextPost = document.querySelector(".next-post");
+let NavPrevArrow = document.querySelector(".nav-post__arrow .fa-arrow-left");
+let NavNextArrow = document.querySelector(".nav-post__arrow .fa-arrow-right");
 
-var lightbox = document.querySelector(".lightbox");
-var Singlefullscreen = document.querySelector(".single-image__overlay .fa-expand");
-var boxcross = document.querySelector(".lightbox__close");
-var image = document.querySelector(".single-image img");
+let Singlefullscreen = document.querySelector(".single-image__overlay .fa-expand");
+let image = document.querySelector(".single-image img");
 
 SingleBtn.onclick = function() {
     modal.style.display = "block";
