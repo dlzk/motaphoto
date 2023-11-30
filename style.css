@@ -274,28 +274,45 @@ form p {
     margin: 15vh 12vw 2vh 12vw;
     justify-content: space-between;
 }
-.format-list_item {
+.filter .format-list_item {
     margin-left: 2vw;
 }
-select {
+.filter ul {
     font-family: Poppins;
     font-size: 14px;
     font-weight: 300;
     line-height: 21px;
     min-width: 180px;
+    background-color: #FFFFFF;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.filter li {
+    list-style-type: none;
+    position: absolute;
+    
+    float: none;
+}
+.first_item {
     border: 1px solid#B8BBC2;
+    margin: 0;
 }
-select:active {
-    border: 1.3px solid #215AFF;
+.blank {
+    width: 100%;
+    height: 21px;
 }
-select.decorated option:hover {
-    background-color: #FFD6D6 !important;
+.first_item:active {
+    border: 1px solid #215AFF;
 }
-option:active {
-    background-color: #FE5858 !important;
+.filter li:hover {
+    background-color: #FFD6D6;
 }
-option:checked {
-    background-color: #E00000 !important;
+.filter li:active {
+    background-color: #FE5858;
+}
+.filter li:checked {
+    background-color: #E00000;
 }
 .single-btn:hover {
     background-color: #000000;

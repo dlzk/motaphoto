@@ -40,32 +40,39 @@ $formats = get_terms( array(
 ?>
 <section class="filter flex">
 	<div class="flex">
-		<select class="decorated cat-list_item" name="cats" id="cats" 
-			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" 
-			data-action="capitaine_load_photos">
-			<option value="" selected="selected">CATÉGORIES</option>
+		<ul class="cat-list_item" name="cats" id="cats">
+			<p class="cat-first_item first_item">CATÉGORIES</p>
+			<li value="" class="blank" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"></li>
 			<?php foreach($cats as $cat) { ?>
-				<option value="<?php echo $cat->slug; ?>"
-				><?php echo $cat->name; ?></option>
+				<li value="<?php echo $cat->slug; ?>"
+				data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+				data-action="capitaine_load_photos"
+				><?php echo $cat->name; ?></li>
 			<?php } ?>
-		</select>
-		<select class="format-list_item" name="formats" id="formats"
-			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
-			data-action="capitaine_load_photos">
-			<option value="" selected="selected">FORMATS</option>
+		</ul>
+		<ul class="format-list_item" name="formats" id="formats">
+			<p class="format-first_item first_item">FORMATS</p>
+			<li value="" class="blank" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"></li>
 			<?php foreach($formats as $format) { ?>
-				<option value="<?php echo $format->slug; ?>"><?php echo $format->name; ?></option>
+				<li value="<?php echo $format->slug; ?>"
+				data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+				data-action="capitaine_load_photos"
+				><?php echo $format->name; ?></li>
 			<?php } ?>
-		</select>
+		</ul>
 	</div>
 	<div>
-		<select class="date_item" name="dates" id="dates"
-			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>" 
-			data-action="capitaine_load_photos">
-			<option value="" selected="selected" disabled>TRIER PAR</option>
-			<option value="desc">DES PLUS RÉCENTS AUX PLUS ANCIENTS</option>
-			<option value="asc">DES PLUS ANCIENTS AUX PLUS RÉCENTS</option>
-		</select>
+		<ul class="date-list_item" name="dates" id="dates">
+			<p class="date-first_item first_item">TRIER PAR</p>
+			<li value="desc"
+			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+			data-action="capitaine_load_photos"
+			>DES PLUS RÉCENTS AUX PLUS ANCIENTS</li>
+			<li value="asc"
+			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+			data-action="capitaine_load_photos"
+			>DES PLUS ANCIENTS AUX PLUS RÉCENTS</li>
+		</ul>
 	</div>
 </section>
 <section>

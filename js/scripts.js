@@ -48,9 +48,7 @@ let button = document.querySelector('.menu-toggle');
 }() );
 
 
-let catElement = document.querySelector(".cat-list_item");
-let formatElement = document.querySelector(".format-list_item");
-let orderElement = document.querySelector(".date_item");
+
 let order = 'ASC';
 let page = 8;
 let category = '';
@@ -76,82 +74,111 @@ jQuery(function($) {
       } else {
         $('.catalogue-photo').hide();
       }
-    });
-    $.getScript('wp-content/themes/motaphoto/js/lightbox-scripts.js', function() {
+    })
+    .then( () => {
+      $.getScript('wp-content/themes/motaphoto/js/lightbox-scripts.js', function() {
       // Une fois que le script est chargé, exécutez le code spécifique que vous souhaitez
       // par exemple, si lightbox-scripts.js a une fonction nommée initLightbox(), vous pouvez l'appeler ici
-      initLightbox();
-  });
-  });
-
-  $('body').on('change', '.cat-list_item', function() {
-    category = catElement.value;
-    page = 8;
-    var data = {
-      'action': $(this).data('action'),
-      'category': category,
-      'format': format,
-      'page': page,
-      'order': order,
-      'security': blog.security
-    };
-    console.log(blog.ajaxurl);
-    console.log(data);
- 
-    $.post(blog.ajaxurl, data, function(response) {
-      if($.trim(response) != '') {
-        $('.catalogue-photo').html(response);
-        $('.catalogue-photo').show();
-      } else {
-        $('.catalogue-photo').hide();
-      }
+        initLightbox();
+      });
     });
   });
 
-  $('body').on('change', '.format-list_item', function() {
-    format = formatElement.value;
-    page = 8;
-    var data = {
-      'action': $(this).data('action'),
-      'category': category,
-      'format': format,
-      'page': page,
-      'order': order,
-      'security': blog.security
-    };
-    console.log(blog.ajaxurl);
-    console.log(data);
- 
-    $.post(blog.ajaxurl, data, function(response) {
-      if($.trim(response) != '') {
-        $('.catalogue-photo').html(response);
-        $('.catalogue-photo').show();
-      } else {
-        $('.catalogue-photo').hide();
-      }
+  $('.cat-list_item li').each( function(catElement) {
+    $(this).on('click', function() {
+      category = $(this).attr('value');
+      page = 8;
+      var data = {
+        'action': 'capitaine_load_photos',
+        'category': category,
+        'format': format,
+        'page': page,
+        'order': order,
+        'security': blog.security
+      };
+      console.log(blog.ajaxurl);
+      console.log(data);
+  
+      $.post(blog.ajaxurl, data, function(response) {
+        if($.trim(response) != '') {
+          $('.catalogue-photo').html(response);
+          $('.catalogue-photo').show();
+        } else {
+          $('.catalogue-photo').hide();
+        }
+      })
+      .then( () => {
+        $.getScript('wp-content/themes/motaphoto/js/lightbox-scripts.js', function() {
+        // Une fois que le script est chargé, exécutez le code spécifique que vous souhaitez
+        // par exemple, si lightbox-scripts.js a une fonction nommée initLightbox(), vous pouvez l'appeler ici
+          initLightbox();
+        });
+      });
     });
   });
 
-  $('body').on('change', '.date_item', function() {
-    order = orderElement.value;
-    var data = {
-      'action': $(this).data('action'),
-      'category': category,
-      'format': format,
-      'page': page,
-      'order': order,
-      'security': blog.security
-    };
-    console.log(blog.ajaxurl);
-    console.log(data);
- 
-    $.post(blog.ajaxurl, data, function(response) {
-      if($.trim(response) != '') {
-        $('.catalogue-photo').html(response);
-        $('.catalogue-photo').show();
-      } else {
-        $('.catalogue-photo').hide();
-      }
+  $('.format-list_item li').each( function(formatElement) {
+    $(this).on('click', function() {
+      format = $(this).attr('value');
+      page = 8;
+      var data = {
+        'action': 'capitaine_load_photos',
+        'category': category,
+        'format': format,
+        'page': page,
+        'order': order,
+        'security': blog.security
+      };
+      console.log(blog.ajaxurl);
+      console.log(data);
+  
+      $.post(blog.ajaxurl, data, function(response) {
+        if($.trim(response) != '') {
+          $('.catalogue-photo').html(response);
+          $('.catalogue-photo').show();
+        } else {
+          $('.catalogue-photo').hide();
+        }
+      })
+      .then( () => {
+        $.getScript('wp-content/themes/motaphoto/js/lightbox-scripts.js', function() {
+        // Une fois que le script est chargé, exécutez le code spécifique que vous souhaitez
+        // par exemple, si lightbox-scripts.js a une fonction nommée initLightbox(), vous pouvez l'appeler ici
+          initLightbox();
+        });
+      });
+    });
+  });
+
+  $('.date-list_item li').each( function(orderElement) {
+    $(this).on('click', function() {
+      order = $(this).attr('value');
+      var data = {
+        'action': 'capitaine_load_photos',
+        'category': category,
+        'format': format,
+        'page': page,
+        'order': order,
+        'security': blog.security
+      };
+      console.log(blog.ajaxurl);
+      console.log(data);
+  
+      $.post(blog.ajaxurl, data, function(response) {
+        if($.trim(response) != '') {
+          $('.catalogue-photo').html(response);
+          $('.catalogue-photo').show();
+        } else {
+          $('.catalogue-photo').hide();
+        }
+      })
+      .then( () => {
+        $.getScript('wp-content/themes/motaphoto/js/lightbox-scripts.js', function() {
+        // Une fois que le script est chargé, exécutez le code spécifique que vous souhaitez
+        // par exemple, si lightbox-scripts.js a une fonction nommée initLightbox(), vous pouvez l'appeler ici
+          initLightbox();
+        });
+      });
     });
   });
 });
