@@ -47,6 +47,30 @@ let button = document.querySelector('.menu-toggle');
   
 }() );
 
+( function() {
+  let dropdowns = document.querySelectorAll(".drop-down");
+
+  dropdowns.forEach( function(dropdown) {
+    dropdown.onclick = function() {
+      dropdown.childNodes[3].classList.toggle( 'ghost' );
+      this.querySelector('.first_item i').classList.toggle('fa-chevron-down');
+      this.querySelector('.first_item i').classList.toggle('fa-chevron-up');
+    }
+
+    document.addEventListener( 'click', function( event ) {
+      const isClickInside = dropdown.contains( event.target );
+    
+      if ( ! isClickInside ) {
+        dropdown.childNodes[3].classList.remove( 'ghost' );
+        // if ( dropdown.querySelector('.first_item i').classList.contains('fa-chevron-up') === true) {
+        //   dropdown.querySelector('.first_item i').classList.replace('fa-chevron-up', 'fa-chevron-down');
+        //   console.log( dropdown.querySelector('.first_item i').classList.contains('fa-chevron-up'));
+        //   console.log(dropdown.childNodes[3]);
+        // }
+      }
+    });
+  });
+}() );
 
 
 let order = 'ASC';

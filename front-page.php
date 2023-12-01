@@ -39,40 +39,46 @@ $formats = get_terms( array(
 ) );
 ?>
 <section class="filter flex">
-	<div class="flex">
-		<ul class="cat-list_item" name="cats" id="cats">
-			<p class="cat-first_item first_item">CATÉGORIES</p>
-			<li value="" class="blank" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"></li>
-			<?php foreach($cats as $cat) { ?>
-				<li value="<?php echo $cat->slug; ?>"
-				data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
-				data-action="capitaine_load_photos"
-				><?php echo $cat->name; ?></li>
-			<?php } ?>
-		</ul>
-		<ul class="format-list_item" name="formats" id="formats">
-			<p class="format-first_item first_item">FORMATS</p>
-			<li value="" class="blank" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"></li>
-			<?php foreach($formats as $format) { ?>
-				<li value="<?php echo $format->slug; ?>"
-				data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
-				data-action="capitaine_load_photos"
-				><?php echo $format->name; ?></li>
-			<?php } ?>
-		</ul>
+	<div class="flex filter__select">
+		<div class="drop-down cat-drop-down">
+			<p class="cat-first_item first_item">CATÉGORIES<i class="fa-solid fa-chevron-down"></i></p>
+			<ul class="cat-list_item drop-down_item" name="cats" id="cats">
+				<li value="" class="blank" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"></li>
+				<?php foreach($cats as $cat) { ?>
+					<li value="<?php echo $cat->slug; ?>"
+					data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+					data-action="capitaine_load_photos"
+					><?php echo $cat->name; ?></li>
+				<?php } ?>
+			</ul>
+		</div>
+		<div class="drop-down">
+			<p class="format-first_item first_item">FORMATS<i class="fa-solid fa-chevron-down"></i></p>
+			<ul class="format-list_item drop-down_item" name="formats" id="formats">
+				<li value="" class="blank" data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"></li>
+				<?php foreach($formats as $format) { ?>
+					<li value="<?php echo $format->slug; ?>"
+					data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+					data-action="capitaine_load_photos"
+					><?php echo $format->name; ?></li>
+				<?php } ?>
+			</ul>
+		</div>
 	</div>
-	<div>
-		<ul class="date-list_item" name="dates" id="dates">
-			<p class="date-first_item first_item">TRIER PAR</p>
-			<li value="desc"
-			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
-			data-action="capitaine_load_photos"
-			>DES PLUS RÉCENTS AUX PLUS ANCIENTS</li>
-			<li value="asc"
-			data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
-			data-action="capitaine_load_photos"
-			>DES PLUS ANCIENTS AUX PLUS RÉCENTS</li>
-		</ul>
+	<div class="filter__select">
+		<div class="drop-down">
+			<p class="date-first_item first_item">TRIER PAR<i class="fa-solid fa-chevron-down"></i></p>
+			<ul class="date-list_item drop-down_item" name="dates" id="dates">
+				<li value="desc"
+				data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+				data-action="capitaine_load_photos"
+				>DES PLUS RÉCENTS AUX PLUS ANCIENTS</li>
+				<li value="asc"
+				data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+				data-action="capitaine_load_photos"
+				>DES PLUS ANCIENTS AUX PLUS RÉCENTS</li>
+			</ul>
+		</div>
 	</div>
 </section>
 <section>

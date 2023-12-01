@@ -30,8 +30,8 @@ button, .nav-post__arrow .fa-solid {
 .margin-space {
     margin: 0 5vw;
 }
-.ghost {
-    opacity: 0;
+.drop-down .ghost {
+    display: block;
 }
 .stop-scroll {
     overflow: hidden;
@@ -274,51 +274,87 @@ form p {
     margin: 15vh 12vw 2vh 12vw;
     justify-content: space-between;
 }
-.filter .format-list_item {
-    margin-left: 2vw;
+.filter__select .cat-drop-down {
+    margin-right: 2vw;
 }
-.filter ul {
+.filter .filter__select .drop-down {
+    float: left;
+    position: relative;
+    min-width: 180px;
     font-family: Poppins;
     font-size: 14px;
     font-weight: 300;
     line-height: 21px;
-    min-width: 180px;
+}
+.filter .filter__select::after, .filter .drop-down_item::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.drop-down_item{
+    display: none;
+    list-style-type: none;
     background-color: #FFFFFF;
-    position: relative;
+    position: absolute;
+    z-index: 10;
     padding: 0;
     margin: 0;
 }
-.filter li {
-    list-style-type: none;
-    position: absolute;
-    
+.drop-down_item li{
     float: none;
+    text-align: left;
+    min-width: 164px;
+    padding: 8px;
 }
+/* .filter > .filter__select .drop-down:hover .drop-down_item{
+    display: block;
+} */
+.filter > .filter__select .drop-down:hover .first_item::after{
+    animation: rotationFleche 0.2s linear forwards;
+}
+/* .drop-down > p::after{
+    content:" ▼";
+    font-size: 12px;
+} */
 .first_item {
     border: 1px solid#B8BBC2;
+    border-radius: 5px 5px 0 0;
+    padding: 8px;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .blank {
-    width: 100%;
     height: 21px;
 }
 .first_item:active {
     border: 1px solid #215AFF;
 }
-.filter li:hover {
+.drop-down_item li:hover:hover {
     background-color: #FFD6D6;
 }
-.filter li:active {
+.drop-down_item li:active {
     background-color: #FE5858;
 }
-.filter li:checked {
+.drop-down_item li:checked {
     background-color: #E00000;
 }
 .single-btn:hover {
     background-color: #000000;
     color: #FFFFFF;
 }
-
+.spin {
+    animation: rotationFleche 0.2s linear forwards;
+}
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(90deg);
+    }
+}
 /*catalogue photo*/
 .catalogue-photo {
     display: flex;
