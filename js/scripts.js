@@ -52,7 +52,7 @@ let button = document.querySelector('.menu-toggle');
 
   dropdowns.forEach( function(dropdown) {
     dropdown.onclick = function() {
-      dropdown.childNodes[3].classList.toggle( 'ghost' );
+      dropdown.childNodes[3].classList.toggle( 'show' );
       this.querySelector('.first_item i').classList.toggle('fa-chevron-down');
       this.querySelector('.first_item i').classList.toggle('fa-chevron-up');
     }
@@ -61,12 +61,10 @@ let button = document.querySelector('.menu-toggle');
       const isClickInside = dropdown.contains( event.target );
     
       if ( ! isClickInside ) {
-        dropdown.childNodes[3].classList.remove( 'ghost' );
-        // if ( dropdown.querySelector('.first_item i').classList.contains('fa-chevron-up') === true) {
-        //   dropdown.querySelector('.first_item i').classList.replace('fa-chevron-up', 'fa-chevron-down');
-        //   console.log( dropdown.querySelector('.first_item i').classList.contains('fa-chevron-up'));
-        //   console.log(dropdown.childNodes[3]);
-        // }
+        dropdown.childNodes[3].classList.remove( 'show' );
+        if ( dropdown.querySelector('.first_item i').classList.contains('fa-chevron-down') != true) {
+          dropdown.querySelector('.first_item i').classList.replace('fa-chevron-up', 'fa-chevron-down');
+        }
       }
     });
   });
@@ -78,6 +76,21 @@ let page = 8;
 let category = '';
 let format = '';
 jQuery(function($) {
+  function setSelected (selected, zoneSelect, placeholder, blank) {
+    zoneSelect.each( function() {
+      if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+      }
+    });
+    selected.addClass('selected');
+    if (selected.html()!='') {
+      placeholder.html(selected.html());
+    }
+    else {
+      placeholder.html(blank);
+    }
+  }
+
   $('body').on('click', '.js-load-photos', function() {
     page = page+8;
     var data = {
@@ -138,6 +151,7 @@ jQuery(function($) {
           initLightbox();
         });
       });
+      setSelected($(this), $('.cat-list_item li'), $('.cat-first_item span'), 'CATÉGORIES');
     });
   });
 
@@ -171,6 +185,7 @@ jQuery(function($) {
           initLightbox();
         });
       });
+      setSelected($(this), $('.format-list_item li'), $('.format-first_item'), 'FORMATS');
     });
   });
 
@@ -203,6 +218,7 @@ jQuery(function($) {
           initLightbox();
         });
       });
+      setSelected($(this), $('.date-list_item li'), $('.date-first_item'), 'TRIER PAR');
     });
   });
 });

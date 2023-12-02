@@ -30,11 +30,15 @@ button, .nav-post__arrow .fa-solid {
 .margin-space {
     margin: 0 5vw;
 }
-.drop-down .ghost {
+.drop-down .show {
     display: block;
 }
 .stop-scroll {
     overflow: hidden;
+}
+.drop-down_item .selected {
+    background-color: #E00000!important;
+    color:#FFFFFF;
 }
 
 /*Pour les menus*/
@@ -241,6 +245,9 @@ form p {
     justify-content: space-between;
     width: 46px;
 }
+.nav-post__arrow .ghost {
+    display: none;
+}
 .photo-load {
     display: flex;
     justify-content: center;
@@ -306,16 +313,9 @@ form p {
     min-width: 164px;
     padding: 8px;
 }
-/* .filter > .filter__select .drop-down:hover .drop-down_item{
-    display: block;
-} */
 .filter > .filter__select .drop-down:hover .first_item::after{
     animation: rotationFleche 0.2s linear forwards;
 }
-/* .drop-down > p::after{
-    content:" ▼";
-    font-size: 12px;
-} */
 .first_item {
     border: 1px solid#B8BBC2;
     border-radius: 5px 5px 0 0;
@@ -331,14 +331,11 @@ form p {
 .first_item:active {
     border: 1px solid #215AFF;
 }
-.drop-down_item li:hover:hover {
+.drop-down_item li:hover {
     background-color: #FFD6D6;
 }
 .drop-down_item li:active {
     background-color: #FE5858;
-}
-.drop-down_item li:checked {
-    background-color: #E00000;
 }
 .single-btn:hover {
     background-color: #000000;
@@ -572,8 +569,14 @@ form p {
         display: none;
     }
     .filter {
-        overflow: auto;
+        overflow-x: auto;
         margin: 4vh 2vw 2vh 2vw;
+    }
+    .drop-down {
+        overflow-y: visible;
+    }
+    .filter__select .format-drop-down {
+        margin-right: 2vw;
     }
     .date_item {
         margin-left: 2vw;
