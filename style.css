@@ -292,6 +292,7 @@ form p {
     font-size: 14px;
     font-weight: 300;
     line-height: 21px;
+    cursor: pointer;
 }
 .filter .filter__select::after, .filter .drop-down_item::after {
     content: "";

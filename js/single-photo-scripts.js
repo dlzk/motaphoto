@@ -1,6 +1,9 @@
 let SingleBtn = document.querySelector(".single-modal");
 let ref = document.querySelector(".single-ref");
 
+let lightbox = document.querySelector(".lightbox");
+let boxcross = document.querySelector(".lightbox__close");
+
 let NavPrevPost = document.querySelector(".prev-post");
 let NavNextPost = document.querySelector(".next-post");
 let NavPrevArrow = document.querySelector(".nav-post__arrow .fa-arrow-left");

@@ -43,34 +43,46 @@ while ( have_posts() ) :
 			<div class="nav-post">
 				<div class="prev-post">
 					<?php
+						$last_post = get_posts(array( 'post_type' => 'photo', 'order' => 'DESC', 'orderby' => 'date', 'posts_per_page' => -1));
 						$prev_post = get_previous_post();
-						if($prev_post) :
+						if($prev_post) {
 							if (!empty($prev_post)) :
 								echo get_the_post_thumbnail($prev_post);
 							endif;
-						endif;
+						}
+						else {
+							if (!empty($last_post)) :
+								echo get_the_post_thumbnail($last_post[0]);
+							endif;
+						}
 					?>
 				</div>
 				<div class="next-post">
 					<?php
+						$first_post = get_posts(array( 'post_type' => 'photo', 'order' => 'ASC', 'orderby' => 'date', 'posts_per_page' => -1));
 						$next_post = get_next_post();
-						if($next_post) :
+						if($next_post) {
 							if (!empty($next_post)) :
 								echo get_the_post_thumbnail($next_post);
 							endif;
-						endif;
+						}
+						else {
+							if (!empty($first_post)) :
+								echo get_the_post_thumbnail($first_post[0]);
+							endif;
+						}
 					?>
 				</div>
 				<div class="flex nav-post__arrow">
 					<?php if($prev_post) { ?>
 						<a href="<?php echo get_permalink( $prev_post ); ?>"><i class="fa-solid fa-arrow-left"></i></a>
 					<?php } else { ?>
-						<i class="fa-solid fa-arrow-left ghost"></i>
+						<a href="<?php echo get_permalink( $last_post[0] ); ?>"><i class="fa-solid fa-arrow-left"></i></a>
 					<?php } ?>
 					<?php if($next_post) { ?>
 						<a href="<?php echo get_permalink( $next_post ); ?>"><i class="fa-solid fa-arrow-right"></i></a>
 					<?php } else { ?>
-						<i class="fa-solid fa-arrow-right ghost">
+						<a href="<?php echo get_permalink( $first_post[0] ); ?>"><i class="fa-solid fa-arrow-right"></i></a>
 					<?php } ?>
 				</div>
 			</div>
