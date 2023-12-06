@@ -53,7 +53,7 @@ button, .nav-post__arrow .fa-solid {
     list-style-type: none;
     padding: 0;
 }
-.nav-link, .photo-load .single-btn, .nav-post__arrow a {
+.nav-link, .photo-load .single-btn, .all-photo .single-btn, .nav-post__arrow a {
     text-decoration: none;
     color: black;
 }
@@ -240,6 +240,7 @@ form p {
 .nav-post img{
     width: 46px;
     height: 31.2px;
+    object-fit: cover;
 }
 .nav-post__arrow {
     justify-content: space-between;
@@ -248,11 +249,11 @@ form p {
 .nav-post__arrow .ghost {
     display: none;
 }
-.photo-load {
+.photo-load, .all-photo {
     display: flex;
     justify-content: center;
 }
-.photo-load .single-btn {
+.photo-load .single-btn, .all-photo .single-btn {
     margin: 0;
 }
 
@@ -497,7 +498,7 @@ form p {
     }
     .main-menu .menu {
       left: -100%;
-      top: 4%;
+      top: -28px;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -566,8 +567,12 @@ form p {
     .single-photo {
         text-align: center;
     }
-    .photo-load, .nav-post {
+    .all-photo, .nav-post {
         display: none;
+    }
+    .hero h1 {
+        text-stroke: 1px #FFFFFF;
+        -webkit-text-stroke: 1px #FFFFFF;
     }
     .filter {
         overflow-x: auto;
@@ -575,6 +580,9 @@ form p {
     }
     .drop-down {
         overflow-y: visible;
+    }
+    .openlist {
+        height: 225px;
     }
     .filter__select .format-drop-down {
         margin-right: 2vw;

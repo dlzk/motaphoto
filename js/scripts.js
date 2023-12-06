@@ -52,6 +52,7 @@ let button = document.querySelector('.menu-toggle');
 
   dropdowns.forEach( function(dropdown) {
     dropdown.onclick = function() {
+      dropdown.classList.toggle('openlist');
       dropdown.childNodes[3].classList.toggle( 'show' );
       this.querySelector('.first_item i').classList.toggle('fa-chevron-down');
       this.querySelector('.first_item i').classList.toggle('fa-chevron-up');

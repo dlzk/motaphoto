@@ -104,7 +104,7 @@ while ( have_posts() ) :
 			$photo_block_content = ob_get_clean();
 			echo $photo_block_content;
 		?>
-		<div class="photo-load">
+		<div class="all-photo">
 			<a href="<?php echo get_home_url(); ?>" class="single-btn">Toutes les photos</a>
 		</div>
 	</section>
