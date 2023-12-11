@@ -229,14 +229,11 @@ form p {
     border: 0px;
     background-color: #D8D8D8;
 }
-.prev-post {
+.prev-post, .next-post {
     display: none;
     animation: fadeIn 1s;
 }
-.next-post {
-    display: none;
-    animation: fadeIn 1s;
-}
+
 .nav-post img{
     width: 46px;
     height: 31.2px;
