@@ -495,7 +495,7 @@ form p {
     }
     .main-menu .menu {
       left: -100%;
-      top: -28px;
+      top: 18px;
       flex-direction: column;
       justify-content: center;
       align-items: center;
